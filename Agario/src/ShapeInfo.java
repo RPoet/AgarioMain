@@ -6,12 +6,14 @@ public class ShapeInfo {
     Type type;
     int width, height;
     Color color;
+    float scale;
 
-    ShapeInfo(Type type, int radius, Color color) {
+    ShapeInfo(Type type, int radius, float scale, Color color) {
         this.type = type;
         this.width  = radius * 2;
         this.height = radius * 2;
         this.color = color;
+        this.scale = scale;
     }
 
     void setRadius(float radius)

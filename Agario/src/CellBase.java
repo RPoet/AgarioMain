@@ -9,8 +9,8 @@ public class CellBase extends GameObject{
     {
         this.radius = radius;
         this.cellColor = color;
-        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)(radius), new Color(cellColor.getRed(),cellColor.getGreen(),cellColor.getBlue(), 128 )));
-        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)(radius * 0.8f), color));
+        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)(radius), 1, new Color(cellColor.getRed(),cellColor.getGreen(),cellColor.getBlue(), 128 )));
+        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)(radius), 0.8f, color));
         this.collider.add(new Collision(radius, 1, Collision.Type.COLLISION));
         
         this.SetPosition(x, y);

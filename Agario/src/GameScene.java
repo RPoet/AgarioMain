@@ -34,6 +34,15 @@ public class GameScene
             toRemove.clear();
         }
     }
+    public void cleanup() {
+        for(var i : gameObjects)
+        {
+            if (!i.isValid())
+            {
+                removeGameObject(i); 
+            }
+        }
+    }
 
     public PlayerAgario getPlayer()
     {
@@ -42,6 +51,8 @@ public class GameScene
 
     public void update()
     {
+        cleanup();
+        
         flushPending();
         
         collide();

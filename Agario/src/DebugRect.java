@@ -5,9 +5,9 @@ class DebugCircle extends GameObject {
 
     DebugCircle(float x, float y, float radius, Color color)
     {
-        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)radius, color));
+        this.shapes.add(new ShapeInfo(ShapeInfo.Type.OVAL, (int)radius, 1, color));
         this.SetPosition(x,y);
-        this.collider.add(new Collision(radius, 1, Collision.Type.COLLISION));
+        this.collider.add(new Collision(radius, 1, Collision.Type.TRIGGER));
         
         this.bHit = false;
     }
@@ -44,7 +44,7 @@ public class DebugRect extends GameObject {
 
     DebugRect()
     {
-        this.shapes.add(new ShapeInfo(ShapeInfo.Type.RECTANGLE, 100, Color.YELLOW));
+        this.shapes.add(new ShapeInfo(ShapeInfo.Type.RECTANGLE, 100,1, Color.YELLOW));
     }
 
     @Override

@@ -85,19 +85,22 @@ public class GameObject {
 
         for (ShapeInfo s : shapes)
         {     
-            int localOffsetX = (int)(s.width * z * 0.5);
-            int localOffsetY = (int)(s.height * z * 0.5);
+            int localOffsetX = (int)(s.width * s.scale * z * 0.5);
+            int localOffsetY = (int)(s.height * s.scale * z * 0.5);
             
+            int width = (int)(s.width * s.scale * z);
+            int height = (int)(s.height * s.scale * z);
+
             g2.setColor(s.color);
             switch (s.type) {
                 case RECTANGLE:
-                    g2.fillRect(x - localOffsetX, y - localOffsetY, s.width * z, s.height * z);
+                    g2.fillRect(x - localOffsetX, y - localOffsetY, width, height);
                     break;
                 case OVAL:
-                    g2.fillOval(x - localOffsetX, y - localOffsetY,  s.width * z, s.height * z);
+                    g2.fillOval(x - localOffsetX, y - localOffsetY, width, height);
                     break;
                 case LINE:
-                    g2.drawLine(x - localOffsetX, y - localOffsetY,  s.width * z, s.height * z);
+                    g2.drawLine(x - localOffsetX, y - localOffsetY, width, height);
                     break;
             }
         }

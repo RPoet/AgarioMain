@@ -10,7 +10,19 @@ public class PlayerAgario extends CellBase{
     @Override
     public void onHit( Collision myHitCollsion, Collision otherHitCollision, GameObject other )
     {
-        float otherRadius = otherHitCollision.radius;
+        if(otherHitCollision.type == Collision.Type.COLLISION)
+        {
+            float enemyRadius = otherHitCollision.radius;
+            if( radius * 0.75 > enemyRadius )
+            {
+                other.setValidity(false);
+                this.setRadius(radius + (enemyRadius * 0.1f));
+            }
+            else
+            {
+                //this.setRadius(radius * 0.75f);
+            }
+        }
     }
 
     @Override

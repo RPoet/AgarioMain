@@ -46,14 +46,24 @@ public class EnemySpawner extends GameObject {
 
     private void spawnEnemy() {
         Transform pt = scene.player.getTransform();
+
         float px = pt.x;
         float py = pt.y;
 
         float x = px + (random.nextFloat() * 2f - 1f) * rangeX;
         float y = py + (random.nextFloat() * 2f - 1f) * rangeY;
 
+        if (random.nextFloat() < 0.15f) {
+        BombAgario bomb = new BombAgario(x, y, 25f); // 반지름 25짜리 폭탄
+        scene.addGameObject(bomb);
+        return; // 폭탄 생성 후 종료 (적은 안 만들고)
+        }
+
+        float playerRadius = scene.player.getRadius();
+        float baseSize = Math.min(playerRadius, 100f);        
+
         float radius = minRadius +
-                       random.nextFloat() * (maxRadius - minRadius);
+                       random.nextFloat() * (baseSize - minRadius);
         Color color = new Color(
             random.nextInt(256),
             random.nextInt(256),

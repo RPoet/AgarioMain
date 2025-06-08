@@ -2,10 +2,11 @@ import java.awt.*;
 
 public class PlayScene extends GameScene{
 
-    PlayScene()
+    PlayScene(String playerName)
     {
         player = new PlayerAgario(0,0, 30, Color.RED);
-
+        player.setName(playerName);
+        
         gameObjects.add(new DebugCircle(250,250, 50, Color.RED));
         gameObjects.add(player);
 

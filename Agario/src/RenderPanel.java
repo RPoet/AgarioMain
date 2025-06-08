@@ -1,6 +1,6 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 class RenderPanel extends JPanel {
     private final long animDuration = 500;
@@ -25,6 +25,10 @@ class RenderPanel extends JPanel {
         initClickPan();
     }
 
+    public void setGameScene(GameScene newScene) {
+        this.gameScene = newScene;
+    }
+    
     private void initClickPan() {
         addMouseListener(new MouseAdapter() {
             @Override
@@ -32,6 +36,18 @@ class RenderPanel extends JPanel {
                 
                 int clickX = e.getX();
                 int clickY = e.getY();
+                
+                if (gameScene.isGameOver() && gameScene.isFadeComplete()) {
+                    if (gameScene.getRestartButtonRect().contains(clickX, clickY)) {
+                        
+                        String newName = JOptionPane.showInputDialog(null, "플레이어 이름을 입력하세요:", "게임 다시 시작", JOptionPane.PLAIN_MESSAGE);
+                        
+                        if (newName != null && !newName.trim().isEmpty()) {
+                            RenderPanel.this.gameScene = new PlayScene(newName.trim());
+                        }
+                        return;
+                    }
+                }    
                 
                 double worldX = camX + clickX;
                 double worldY = camY + clickY;
